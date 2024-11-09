@@ -8,8 +8,9 @@ import subprocess
 import logging
 
 app = Flask(__name__)
+import pytesseract
 
-# api/index.py
+
 
 # Enable CORS for all routes
 CORS(app)
@@ -18,19 +19,14 @@ CORS(app)
 
 
 # Use the environment variable for Tesseract command
-print("Tesseract path:", pytesseract.pytesseract.tesseract_cmd)
+#print("Tesseract path:", pytesseract.pytesseract.tesseract_cmd)
 
-# Set the Tesseract path explicitly (if it is installed at a custom location)
-pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # You can try changing this path
+pytesseract.pytesseract.tesseract_cmd = 'tesseract'  # You can try changing this path
 
 # Or use the environment variable if set correctly
-pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD', '/usr/bin/tesseract')
-
-# Debug to confirm the path is correct
-print("Tesseract path used:", pytesseract.pytesseract.tesseract_cmd)
-
-# Ensure Tesseract is in the PATH
-print(pytesseract.pytesseract.tesseract_cmd)  # To debug path
+#pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD', 'tesseract')
+#print("Tesseract path used:", pytesseract.pytesseract.tesseract_cmd)
+#print(pytesseract.pytesseract.tesseract_cmd)  # To debug path
 
   # Adjust if needed
 
