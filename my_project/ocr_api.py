@@ -33,8 +33,12 @@ pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD', 'tesseract')
 
 @app.route('/check-tesseract')
 def check_tesseract():
-    tesseract_path = os.popen('which tesseract').read().strip()  # Executes shell command
-    return f"Tesseract is located at: {tesseract_path}" if tesseract_path else "Tesseract not found"
+    try:
+        tesseract_path = os.popen('which tesseract').read()
+        return jsonify({"tesseract_path": tesseract_path})
+    except Exception as e:
+        return jsonify({"error": str(e)})
+
 
 
 
