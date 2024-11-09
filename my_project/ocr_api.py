@@ -13,7 +13,8 @@ app = Flask(__name__)
 CORS(app)
 
 # Ensure Tesseract is specified if necessary
-pytesseract.pytesseract.tesseract_cmd = '/opt/homebrew/bin/tesseract'  # Adjust if needed
+pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD', '/venv/bin/pytesseract')
+  # Adjust if needed
 
 
 
