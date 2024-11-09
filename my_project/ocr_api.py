@@ -13,7 +13,7 @@ app = Flask(__name__)
 CORS(app)
 
 # Ensure Tesseract is specified if necessary
-pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD', '/venv/bin/pytesseract')
+pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD', '/usr/bin/tesseract')
   # Adjust if needed
 
 
@@ -377,7 +377,6 @@ def parse_extracted_text_rented(text):
 
     return data
 
-if __name__ == '__main__':
-    print("Starting Flask server...")
-    app.run(debug=True)  # Enable debug mode to see detailed errors
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=int(os.getenv("PORT", 8000)))# Enable debug mode to see detailed errors
     
