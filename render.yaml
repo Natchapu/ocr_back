@@ -2,13 +2,9 @@ services:
   - type: web
     name: pyocr
     env: python
-    buildCommand: "pip install -r my_project/requirements.txt"
+    buildCommand: "./install_dependencies.sh && pip install -r my_project/requirements.txt"
     startCommand: "gunicorn --chdir my_project ocr_api:app"
     envVars:
       - key: TESSERACT_CMD
         value: /usr/bin/tesseract
-    requirements:
-      packages:
-        - tesseract-ocr
-        - poppler-utils
     plan: free
