@@ -24,18 +24,18 @@ CORS(app)
 pytesseract.pytesseract.tesseract_cmd = 'tesseract'  # You can try changing this path
 
 # Or use the environment variable if set correctly
-#pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD', 'tesseract')
+pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD', 'tesseract')
 #print("Tesseract path used:", pytesseract.pytesseract.tesseract_cmd)
 #print(pytesseract.pytesseract.tesseract_cmd)  # To debug path
 
   # Adjust if needed
+
+
 @app.route('/check-tesseract')
 def check_tesseract():
-    try:
-        import pytesseract
-        return jsonify({"tesseract_path": pytesseract.pytesseract.tesseract_cmd})
-    except Exception as e:
-        return jsonify({"error": str(e)})  
+    tesseract_path = os.popen('which tesseract').read().strip()  # Executes shell command
+    return f"Tesseract is located at: {tesseract_path}" if tesseract_path else "Tesseract not found"
+
 
 
 
