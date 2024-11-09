@@ -29,6 +29,13 @@ pytesseract.pytesseract.tesseract_cmd = 'tesseract'  # You can try changing this
 #print(pytesseract.pytesseract.tesseract_cmd)  # To debug path
 
   # Adjust if needed
+@app.route('/check-tesseract')
+def check_tesseract():
+    try:
+        import pytesseract
+        return jsonify({"tesseract_path": pytesseract.pytesseract.tesseract_cmd})
+    except Exception as e:
+        return jsonify({"error": str(e)})  
 
 
 
