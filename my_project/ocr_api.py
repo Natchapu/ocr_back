@@ -4,6 +4,8 @@ import pytesseract
 from pdf2image import convert_from_path
 import os
 import re
+import subprocess
+import logging
 
 app = Flask(__name__)
 
@@ -16,7 +18,19 @@ CORS(app)
 
 
 # Use the environment variable for Tesseract command
+print("Tesseract path:", pytesseract.pytesseract.tesseract_cmd)
+
+# Set the Tesseract path explicitly (if it is installed at a custom location)
+pytesseract.pytesseract.tesseract_cmd = '/usr/bin/tesseract'  # You can try changing this path
+
+# Or use the environment variable if set correctly
 pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD', '/usr/bin/tesseract')
+
+# Debug to confirm the path is correct
+print("Tesseract path used:", pytesseract.pytesseract.tesseract_cmd)
+
+# Ensure Tesseract is in the PATH
+print(pytesseract.pytesseract.tesseract_cmd)  # To debug path
 
   # Adjust if needed
 
