@@ -16,7 +16,7 @@ CORS(app)
 
 
 # Use the environment variable for Tesseract command
-pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD', '/usr/bin/tesseract')
+pytesseract.pytesseract.tesseract_cmd = os.getenv('TESSERACT_CMD', '/my_project/venv/bin/pytesseract')
 
   # Adjust if needed
 
