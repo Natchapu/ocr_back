@@ -140,6 +140,10 @@ def parse_extracted_text401(text):
     return data
 
 
+@app.route('/')
+def home():
+    return "Service is up and running!"
+
 @app.route('/ocr_405', methods=['POST']) #donate
 def ocr_405():
     if 'pdf' not in request.files:
