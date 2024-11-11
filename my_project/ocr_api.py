@@ -39,8 +39,8 @@ import os
 import re
 from flask import jsonify, request
 
-@app.route('/ocr_405', methods=['POST'])
-def ocr_405():
+@app.route('/ocr_deduction', methods=['POST'])
+def ocr_deduction():
     if 'file' not in request.files:
         return jsonify({"error": "No file part"}), 400
     
@@ -304,8 +304,8 @@ def parse_extracted_text_salary_slip(text):
 
 
 #ใบลดหย่อนรับบริจาค
-@app.route('/rented', methods=['POST'])
-def rented():
+@app.route('/ocr_405', methods=['POST'])
+def ocr_405():
     if 'file' not in request.files:
         return jsonify({"error": "No file part"}), 400
     
